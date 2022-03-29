@@ -1,0 +1,11 @@
+//Move by Key
+        float h = Input.GetAxisRaw("Horizontal");   
+        rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
+
+		//Max speed Right
+        if(rigid.velocity.x > maxSpeed)  //오른쪽으로 이동 (+) , 최대 속력을 넘으면 
+            rigid.velocity= new Vector2(maxSpeed, rigid.velocity.y); //해당 오브젝트의 속력은 maxSpeed 
+        
+        //Max speed left
+        else if(rigid.velocity.x < maxSpeed*(-1)) // 왼쪽으로 이동 (-) 
+            rigid.velocity =  new Vector2(maxSpeed*(-1), rigid.velocity.y); //y값은 점프의 영향이므로 0으로 제한을 두면 안됨 
